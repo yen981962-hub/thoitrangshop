@@ -1,0 +1,285 @@
+/* --- CẤU TRÚC CHUNG --- */
+.container { 
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* --- HEADER CYAN --- */
+.header {
+  background-color: #00ffff;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0; 
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo { font-weight: bold; font-size: 22px; color: #333; }
+.logo span { color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+.nav { display: flex; gap: 20px; }
+.navLink { font-size: 14px; cursor: pointer; position: relative; font-weight: 500; }
+
+/* --- GRID DANH SÁCH 18 SẢN PHẨM --- */
+.item2 { background-color: #f9f9f9; display: flex; justify-content: center; padding: 40px 0; flex: 1; }
+.mainContent { width: 1100px; max-width: 95%; }
+.hero { text-align: center; margin-bottom: 30px; }
+.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; }
+
+.product {
+  border: 1px solid #eee; border-radius: 8px; padding: 12px;
+  display: flex; flex-direction: column; background: #fff;
+  transition: all 0.3s ease;
+}
+.product:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.productImage { height: 150px; position: relative; margin-bottom: 10px; border-radius: 4px; overflow: hidden; background: #f5f5f5; }
+.productName h3 { font-size: 13px; height: 36px; overflow: hidden; margin-bottom: 8px; color: #333; line-height: 1.4; }
+.price { color: #d0021c; font-weight: bold; font-size: 16px; }
+.oldPrice { text-decoration: line-through; color: #999; font-size: 12px; margin-left: 5px; }
+
+.productRemain {
+  background: linear-gradient(90deg, #ffecb3 0%, #ffb200 100%);
+  border-radius: 20px; font-size: 10px; padding: 4px;
+  text-align: center; margin-bottom: 10px; font-weight: bold; color: #333;
+}
+.buyButton {
+  background: #f1f8fe; color: #288ad6; text-align: center;
+  padding: 8px; border-radius: 6px; font-weight: bold;
+  font-size: 12px; cursor: pointer; border: 1px solid #288ad6;
+  transition: all 0.2s;
+}
+.buyButton:hover { background: #288ad6; color: #fff; }
+
+/* --- DROPDOWN & CART --- */
+.dropdown { display: none; position: absolute; background: #fff; top: 30px; width: 150px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; z-index: 101; color: #333; }
+.dropdown.show { display: block; }
+.cartBtn { cursor: pointer; position: relative; font-size: 22px; }
+.badge { position: absolute; top: -5px; right: -10px; background: #d0021c; color: white; border-radius: 50%; padding: 2px 7px; font-size: 11px; font-weight: bold; }
+
+/* --- SỬA ĐỔI QUAN TRỌNG: GIAO DIỆN CHI TIẾT SẢN PHẨM (2 CỘT SONG SONG) --- */
+.detailContainer {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #288ad6;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.backButton:hover {
+  text-decoration: underline;
+}
+
+/* Khung phân tách layout thành 2 cột trái - phải */
+.detailLayout {
+  display: flex;
+  gap: 35px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* CỘT TRÁI: KHU VỰC CHỨA ẢNH SLIDER */
+.detailLeftColumn {
+  flex: 0 0 450px; /* Định rộng cố định 450px cho khối ảnh */
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Khung bọc ảnh lớn */
+.customBigSlider {
+  position: relative;
+  width: 100%;
+  height: 450px; /* Khai báo chiều cao cố định để Next Image fill ảnh */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f5f5;
+  border: 1px solid #eee;
+}
+
+.bigImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Các nút bấm điều chuyển ảnh trái/phải */
+.sliderArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+.sliderArrow:hover {
+  background: #288ad6;
+  color: #fff;
+}
+.arrowLeft { left: 15px; }
+.arrowRight { right: 15px; }
+
+/* Dải lưới chứa hàng loạt ảnh nhỏ ở dưới */
+.customThumbGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.pureThumbItem {
+  height: 90px; /* Giới hạn chiều cao cho ảnh thumbnail */
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  background: #f5f5f5;
+}
+.pureThumbItem:hover {
+  opacity: 0.9;
+}
+
+/* Trạng thái ảnh nhỏ đang xem: Sáng lên và có viền xanh dương */
+.pureThumbActive {
+  border-color: #288ad6 !important;
+  opacity: 1 !important;
+}
+
+.thumbImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* CỘT PHẢI: KHU VỰC THÔNG TIN SẢN PHẨM */
+.detailInfoColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.detailInfoColumn h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+.detailPriceRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.detailPrice {
+  font-size: 26px;
+  font-weight: bold;
+  color: #d0021c;
+}
+.detailOldPrice {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: #999;
+}
+.detailRemain {
+  font-size: 13px;
+  color: #ffb200;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+.description ul {
+  padding-left: 0;
+  list-style: none;
+}
+.detailConfirmButton {
+  background: #288ad6;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: background 0.2s;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(40, 138, 214, 0.3);
+}
+.detailConfirmButton:hover { background: #1e6fb3; }
+
+/* --- FOOTER XANH LÁ MẠ --- */
+.item3 { 
+  background-color: #9ec53a; 
+  display: flex; 
+  justify-content: center; 
+  padding: 50px 0 20px 0; 
+  color: #ffffff;
+  margin-top: auto;
+}
+.footer { width: 1100px; max-width: 95%; }
+.footerContainer { display: flex; justify-content: space-between; gap: 40px; }
+.footerColumn { flex: 1; }
+.footerTitle { 
+  display: block; font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #ffffff; 
+  text-transform: uppercase; border-bottom: 2px solid rgba(255, 255, 255, 0.4); padding-bottom: 8px; width: fit-content;
+}
+.footerText, .contactInfo li, .footerLinks li { font-size: 14px; line-height: 1.8; margin-bottom: 12px; color: #ffffff; text-shadow: 1px 1px 1px rgba(0,0,0,0.1); }
+.footerLinks li { list-style: none; cursor: pointer; transition: all 0.3s ease; }
+.footerLinks li:hover { padding-left: 8px; font-weight: bold; }
+.mapBox { border: 3px solid #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); height: 140px; background: #f0f4e1; }
+.copyright { border-top: 1px solid rgba(255, 255, 255, 0.3); margin-top: 40px; padding-top: 20px; text-align: center; font-size: 13px; color: #ffffff; opacity: 0.9; }
+
+/* --- RESPONSIVE CHO MOBILE & TABLET --- */
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .detailLayout { gap: 20px; }
+  .detailLeftColumn { flex: 0 0 380px; width: 380px; }
+  .customBigSlider { height: 380px; }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .detailLayout { flex-direction: column; }
+  .detailLeftColumn { flex: unset; width: 100%; }
+  .customBigSlider { height: 320px; }
+  .footerContainer { flex-direction: column; text-align: center; gap: 40px; }
+  .footerTitle { margin-left: auto; margin-right: auto; }
+  .footerLinks li:hover { padding-left: 0; }
+}
