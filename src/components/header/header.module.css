@@ -1,0 +1,93 @@
+.header {
+  background-color: #00ffff;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0; 
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo span {
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navLink {
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+  display: inline-block;
+}
+
+.navLink:hover {
+  opacity: 0.8;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background: #fff;
+  top: 30px;
+  left: 0;
+  width: 150px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 6px;
+  z-index: 101;
+  color: #333;
+  list-style: none;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdown li {
+  padding: 8px 12px;
+  font-size: 13px;
+  transition: background 0.2s;
+  border-radius: 4px;
+}
+
+.dropdown li:hover {
+  background: #f5f5f5;
+}
+
+.cartBtn {
+  cursor: pointer;
+  position: relative;
+  font-size: 22px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #d0021c;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: bold;
+}
